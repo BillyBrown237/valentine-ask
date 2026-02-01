@@ -1,0 +1,310 @@
+:root {
+    --bg1: #ffd6e7;
+    --bg2: #ffeef6;
+    --card: #ffffffcc;
+    --yes: #ff3b7a;
+    --yesHover: #ff1f68;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100svh;
+    min-height: 100vh; /* Fallback for older browsers */
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow: hidden;
+    padding: clamp(12px, 3vw, 20px);
+}
+
+/* FULL-SCREEN CONFETTI CANVAS */
+#confettiCanvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.card {
+    width: min(720px, 100%);
+    max-width: 95vw;
+    padding: clamp(20px, 5vw, 32px) clamp(16px, 4vw, 26px);
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-radius: clamp(16px, 3vw, 22px);
+    text-align: center;
+    box-shadow: 0 18px 60px rgba(0,0,0,.15);
+}
+
+.art {
+    width: min(260px, 70vw);
+    max-width: 280px;
+    margin: 0 auto clamp(8px, 2vw, 12px);
+    display: block;
+    filter: drop-shadow(0 10px 14px rgba(0,0,0,.12));
+}
+
+h1 {
+    font-size: clamp(22px, 5.5vw, 44px);
+    margin: clamp(10px, 2vw, 14px) 0 clamp(14px, 3vw, 20px);
+    line-height: 1.3;
+    padding: 0 10px;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.button-zone {
+    position: relative;
+    width: 100%;
+    max-width: min(520px, 100%);
+    height: clamp(120px, 25vh, 180px);
+    margin: 0 auto;
+    touch-action: none;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 28px);
+    font-size: clamp(16px, 4vw, 20px);
+    font-weight: 800;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(0,0,0,.14);
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .12s ease, background .12s ease;
+    white-space: nowrap;
+    min-width: clamp(80px, 20vw, 100px);
+}
+
+#yesBtn {
+    left: clamp(5%, 10%, 18%);
+    background: var(--yes);
+    color: #fff;
+}
+
+#yesBtn:hover,
+#yesBtn:active {
+    background: var(--yesHover);
+}
+
+#noBtn {
+    right: clamp(5%, 10%, 18%);
+    left: auto;
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.hint {
+    margin-top: clamp(8px, 2vw, 12px);
+    font-size: clamp(12px, 2.5vw, 14px);
+    opacity: .7;
+    padding: 0 10px;
+}
+
+.result {
+    display: none;
+    margin-top: clamp(14px, 3vw, 20px);
+    animation: pop .35s ease;
+}
+
+.result h2 {
+    font-size: clamp(28px, 6vw, 46px);
+    margin: clamp(8px, 2vw, 12px) 0;
+}
+
+.fireworks {
+    width: min(380px, 85vw);
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 12px;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(.96);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Small phones (portrait) */
+@media (max-width: 360px) {
+    .card {
+        padding: 16px 12px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        padding: 10px 16px;
+        font-size: 15px;
+        min-width: 70px;
+    }
+
+    .button-zone {
+        height: 100px;
+    }
+}
+
+/* Phones (landscape) and small tablets */
+@media (max-width: 768px) and (orientation: landscape) {
+    body {
+        padding: 8px;
+    }
+
+    .card {
+        padding: 16px 20px;
+    }
+
+    .art {
+        width: min(180px, 40vw);
+    }
+
+    h1 {
+        font-size: clamp(18px, 4vw, 28px);
+        margin: 8px 0 12px;
+    }
+
+    .button-zone {
+        height: 90px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .card {
+        width: min(600px, 90vw);
+    }
+
+    .art {
+        width: 220px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    button {
+        font-size: 18px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1440px) {
+    .card {
+        max-width: 800px;
+    }
+
+    .art {
+        width: 300px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    button {
+        font-size: 20px;
+        padding: 18px 32px;
+    }
+}
+
+/* Very small screens - ensure usability */
+@media (max-height: 600px) {
+    .card {
+        padding: 12px 16px;
+    }
+
+    .art {
+        width: min(160px, 50vw);
+        margin-bottom: 6px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin: 6px 0 10px;
+    }
+
+    .button-zone {
+        height: 80px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .hint {
+        font-size: 11px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    button {
+        /* Larger touch targets for mobile */
+        min-height: 44px;
+        min-width: 88px;
+    }
+
+    #yesBtn:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card {
+        box-shadow: 0 18px 60px rgba(0,0,0,.12);
+    }
+
+    button {
+        box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    @keyframes pop {
+        from, to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+/* Dark mode support (optional) */
