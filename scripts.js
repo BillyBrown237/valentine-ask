@@ -29,7 +29,7 @@ function setPersonalizedQuestion() {
     if (name) {
         // Capitalize first letter of name
         const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-        question.textContent = `${capitalizedName}, will you be my Valentine?`;
+        question.textContent = `${name}, will you be my Valentine?`;
     } else {
         // Default question if no name is provided
         question.textContent = "Will you be my Valentine?";
