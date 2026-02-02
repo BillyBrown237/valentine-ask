@@ -185,7 +185,10 @@ zone.addEventListener("touchmove", e => {
         }
     }
 }, { passive: false });
-
+noBtn.addEventListener("pointerdown", e => {
+    e.preventDefault()
+    moveNo(e.clientX, e.clientY)
+})
 // Prevent "No" button from being clicked
 noBtn.addEventListener("click", e => e.preventDefault());
 
@@ -210,7 +213,7 @@ let resizeTimeout;
 window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-        // Reset button scale on resize
+        // Reset Yes button scale on resize
         yesScale = 1;
         yesBtn.style.transform = "translateY(-50%) scale(1)";
 
@@ -220,7 +223,7 @@ window.addEventListener("resize", () => {
         if (zoneRect.width > 0) {
             noBtn.style.left = "";
             noBtn.style.top = "";
-            noBtn.style.transform = "";
+            noBtn.style.transform = "translateY(-50%)"; // Maintain vertical centering
         }
     }, 250);
 });

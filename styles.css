@@ -101,7 +101,7 @@ button {
 }
 
 #noBtn {
-    right: clamp(5%, 10%, 18%);
+    /*right: clamp(5%, 10%, 18%);*/
     left: auto;
     background: #e5e7eb;
     color: #111827;
